@@ -1,0 +1,37 @@
+{
+  "name": "Edwin Mobuchon",
+  "title": "Administrateur Systèmes, Réseaux & Sécurité",
+  "subtitle": "Étudiant en Bachelor Informatique – Recherche Stage",
+  "description": "Passionné par les environnements techniques avancés et la cybersécurité. Conception et maintenance d'infrastructures sécurisées via virtualisation (Proxmox), réseaux et automatisation.",
+  "age": 18,
+  "location": "Rennes, Bretagne",
+  "status": "Recherche : Stage Systèmes Réseaux – Juin 2026",
+  "objective": "Stage en Systèmes Réseaux",
+  "softSkills": [
+    "Autonomie",
+    "Polyvalence",
+    "Rigueur",
+    "Esprit analytique",
+    "Curiosité",
+    "Travail en équipe",
+    "Esprit d'initiative"
+  ],
+  "hardSkills": {
+    "systemes": ["Windows Server", "Linux"],
+    "reseaux": ["Configuration réseaux", "Virtualisation", "Active Directory"],
+    "autres": ["Cybersécurité", "Maintenance informatique", "Développement"]
+  },
+  "languages": {
+    "francais": "Langue maternelle",
+    "anglais": "Niveau A2"
+  },
+  "links": {
+    "github": "https://github.com/faton5",
+    "linkedin": "https://www.linkedin.com/in/edwin-mobuchon-a1333235a/",
+    "tryhackme": "https://tryhackme.com/p/faton",
+    "rootme": "https://www.root-me.org/faton?lang=fr",
+    "hackthebox": "https://app.hackthebox.com/users/1894222",
+    "cv": "/CV.pdf",
+    "email": "contact@edwin-mobuchon.fr"
+  }
+}

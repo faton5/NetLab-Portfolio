@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import experienceData from "../data/experience.json";
+---
+
+<BaseLayout
+  title="Expérience | Portfolio"
+  description="Mon parcours professionnel en réseau et cybersécurité"
+>
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title">Expérience Professionnelle</h1>
+      <p class="page-description">
+        Mon parcours professionnel dans le domaine des réseaux, systèmes et
+        cybersécurité.
+      </p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="timeline">
+        {
+          experienceData.map((exp, index) => (
+            <div
+              class="timeline-item card"
+              style={`animation-delay: ${index * 0.1}s`}
+            >
+              <div class="timeline-header">
+                <h3 class="timeline-title">{exp.title}</h3>
+                <span class="timeline-company">{exp.company}</span>
+                <span class="timeline-date">{exp.duration}</span>
+              </div>
+              <div class="timeline-content">
+                <ul>
+                  {exp.missions.map((mission) => (
+                    <li>{mission}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .timeline .card {
+    margin-bottom: 0;
+    padding: 1.5rem 2rem;
+  }
+</style>

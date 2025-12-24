@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ideasData from "../data/ideas.json";
+
+const statusConfig = {
+  planned: { label: "📋 Planifié", class: "planned" },
+  "in-progress": { label: "🔨 En cours", class: "in-progress" },
+  completed: { label: "✅ Terminé", class: "completed" },
+};
+---
+
+<BaseLayout
+  title="Idées de Projets | Portfolio"
+  description="Mes idées de projets futurs"
+>
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title">Idées de Projets</h1>
+      <p class="page-description">
+        Les projets que j'aimerais réaliser ou que j'ai commencé à explorer.
+        Cette liste évolue au fil de ma veille technologique et de mes
+        ambitions.
+      </p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="ideas-grid">
+        {
+          ideasData.map((idea, index) => (
+            <div
+              class="card idea-card"
+              style={`animation-delay: ${index * 0.1}s`}
+            >
+              <span
+                class={`idea-status ${statusConfig[idea.status]?.class || "planned"}`}
+              >
+                {statusConfig[idea.status]?.label || idea.status}
+              </span>
+              <h3 style="margin-bottom: 0.75rem;">{idea.title}</h3>
+              <p style="color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: 1rem;">
+                {idea.description}
+              </p>
+              <div class="tags">
+                {idea.tags.map((tag) => (
+                  <span class="tag tag-outline">{tag}</span>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      {
+        ideasData.length === 0 && (
+          <div style="text-align: center; padding: 4rem 0; color: var(--text-muted);">
+            <p>Aucune idée pour le moment. La créativité arrive !</p>
+          </div>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>

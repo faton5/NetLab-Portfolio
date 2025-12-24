@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Homelab - Cluster Kubernetes",
+    "description": "Déployer un cluster K3s sur Raspberry Pi avec monitoring Prometheus/Grafana",
+    "status": "in-progress",
+    "tags": ["Kubernetes", "Raspberry Pi", "DevOps"]
+  },
+  {
+    "title": "CTF Platform",
+    "description": "Créer une plateforme CTF personnelle pour pratiquer la sécurité offensive",
+    "status": "planned",
+    "tags": ["Cybersécurité", "Docker", "Python"]
+  },
+  {
+    "title": "Network Automation Toolkit",
+    "description": "Suite d'outils Python/Ansible pour automatiser la configuration réseau",
+    "status": "planned",
+    "tags": ["Python", "Ansible", "Cisco", "Automation"]
+  },
+  {
+    "title": "SIEM Maison",
+    "description": "Déployer un SIEM (Wazuh/ELK) pour monitorer mon infrastructure personnelle",
+    "status": "planned",
+    "tags": ["SIEM", "ELK", "Sécurité"]
+  },
+  {
+    "title": "Blog Technique",
+    "description": "Écrire des articles sur mes expériences réseau et cybersécurité",
+    "status": "completed",
+    "tags": ["Rédaction", "Veille"]
+  }
+]

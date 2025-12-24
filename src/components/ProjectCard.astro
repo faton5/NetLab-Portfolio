@@ -1,0 +1,144 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  summary?: string;
+  category?: string;
+  type?: string;
+  image?: string;
+  tags: string[];
+  slug: string;
+  featured?: boolean;
+  status?: string;
+}
+
+const {
+  title,
+  description,
+  summary,
+  category,
+  type,
+  image,
+  tags,
+  slug,
+  featured = false,
+  status,
+} = Astro.props;
+
+// Use description or summary
+const displayDescription = description || summary || "";
+
+// Use category or type
+const displayCategory = category || type || "perso";
+
+// Map old and new category values to labels
+const categoryLabels: Record<string, string> = {
+  // New format
+  network: "🌐 Réseau",
+  ops: "⚙️ Ops/DevOps",
+  homelab: "🏠 Homelab",
+  security: "🔒 Sécurité",
+  // Old format
+  reseau: "🌐 Réseau",
+  securite: "🔒 Cybersécurité",
+  systeme: "⚙️ Systèmes",
+  scolaire: "🎓 Scolaire",
+  perso: "💡 Personnel",
+};
+
+// Status badges
+const statusLabels: Record<string, string> = {
+  en_prod: "✅ En production",
+  en_cours: "🔨 En cours",
+  planifie: "📋 Planifié",
+};
+---
+
+<a
+  href={`/projets/${slug}`}
+  class:list={["card", "project-card", { "card-featured": featured }]}
+>
+  {
+    image ? (
+      <img src={image} alt={title} class="project-card__image" loading="lazy" />
+    ) : (
+      <div class="project-card__image project-card__placeholder">
+        <span>{categoryLabels[displayCategory] || "📁"}</span>
+      </div>
+    )
+  }
+
+  <div class="project-card__content">
+    <h3 class="project-card__title">{title}</h3>
+    <p class="project-card__description">{displayDescription}</p>
+
+    <div class="project-card__meta">
+      <span class="tag"
+        >{categoryLabels[displayCategory] || displayCategory}</span
+      >
+      {
+        status && (
+          <span class="tag tag-outline">{statusLabels[status] || status}</span>
+        )
+      }
+    </div>
+
+    <div class="tags" style="margin-top: 0.75rem;">
+      {
+        tags
+          .slice(0, 3)
+          .map((tag) => <span class="tag tag-outline">{tag}</span>)
+      }
+      {
+        tags.length > 3 && (
+          <span class="tag tag-outline">+{tags.length - 3}</span>
+        )
+      }
+    </div>
+  </div>
+</a>
+
+<style>
+  .project-card {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .project-card__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    background: linear-gradient(
+      135deg,
+      var(--bg-tertiary) 0%,
+      var(--bg-secondary) 100%
+    );
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card__placeholder::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(
+        circle at 20% 80%,
+        var(--accent-glow) 0%,
+        transparent 50%
+      ),
+      radial-gradient(circle at 80% 20%, var(--accent-glow) 0%, transparent 50%);
+    opacity: 0.5;
+  }
+
+  .project-card__placeholder span {
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+</style>

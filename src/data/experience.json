@@ -1,0 +1,53 @@
+[
+  {
+    "company": "Fabrik ta Pépite",
+    "title": "Étudiant Entrepreneur",
+    "duration": "2025 - Présent",
+    "current": true,
+    "description": "Participation au programme d'accompagnement à l'entrepreneuriat étudiant.",
+    "missions": [
+      "Création et structuration d'un projet d'entreprise",
+      "Gestion de projet et organisation",
+      "Développement de l'autonomie et de l'esprit d'initiative"
+    ]
+  },
+  {
+    "company": "Hutchinson Saint-Brieuc",
+    "title": "Stagiaire Réseaux & Systèmes",
+    "duration": "2023 - 2025 (22 semaines)",
+    "current": false,
+    "description": "Stage orienté administration systèmes et réseaux en environnement industriel.",
+    "missions": [
+      "Mise en place de serveur RDP et déploiement TSE",
+      "Installation et configuration avancée de WMS et GLPI",
+      "Administration d'un système Active Directory",
+      "Gestion de tickets utilisateurs via GLPI",
+      "Maintenance de systèmes informatiques"
+    ]
+  },
+  {
+    "company": "Proxlan Saint-Brieuc",
+    "title": "Stagiaire Informatique",
+    "duration": "2023 (4 semaines)",
+    "current": false,
+    "description": "Stage polyvalent orienté support informatique et réseau.",
+    "missions": [
+      "Mise en place d'infrastructures réseau",
+      "Installation de matériel informatique",
+      "Réparation de matériel informatique",
+      "Relation clientèle et organisation de projet"
+    ]
+  },
+  {
+    "company": "CH2P Saint-Brieuc",
+    "title": "Stagiaire Informatique",
+    "duration": "2022 (4 semaines)",
+    "current": false,
+    "description": "Stage de découverte du milieu informatique.",
+    "missions": [
+      "Management de switch",
+      "Relation client",
+      "Organisation et participation à des projets techniques"
+    ]
+  }
+]

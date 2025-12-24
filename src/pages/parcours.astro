@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import educationData from "../data/education.json";
+---
+
+<BaseLayout
+  title="Parcours | Portfolio"
+  description="Mon parcours scolaire et formations"
+>
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title">Parcours Scolaire</h1>
+      <p class="page-description">
+        Ma formation académique et les projets notables réalisés durant mes
+        études.
+      </p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="timeline">
+        {
+          educationData.map((edu, index) => (
+            <div
+              class="timeline-item card"
+              style={`animation-delay: ${index * 0.1}s`}
+            >
+              <div class="timeline-header">
+                <h3 class="timeline-title">{edu.diploma}</h3>
+                <span class="timeline-company">{edu.school}</span>
+                <span class="timeline-date">{edu.year}</span>
+              </div>
+              {edu.projects && edu.projects.length > 0 && (
+                <div class="timeline-content">
+                  <h4 style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                    Projets notables :
+                  </h4>
+                  <ul>
+                    {edu.projects.map((project) => (
+                      <li>{project}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .timeline .card {
+    margin-bottom: 0;
+    padding: 1.5rem 2rem;
+  }
+</style>

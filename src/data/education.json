@@ -1,0 +1,24 @@
+[
+  {
+    "school": "Sup de Vinci",
+    "diploma": "Bachelor Cycle Préparatoire Informatique",
+    "year": "2025 - 2028",
+    "current": true,
+    "location": "Rennes",
+    "projects": [
+      "Spécialisation Systèmes et Réseaux en préparation",
+      "Projets techniques en équipe"
+    ]
+  },
+  {
+    "school": "Lycée Sacré-Cœur Saint-Brieuc",
+    "diploma": "Bac Pro Systèmes Numériques",
+    "year": "2022 - 2025",
+    "mention": "Mention Bien",
+    "projects": [
+      "Projets de déploiement réseau",
+      "Configuration et maintenance de systèmes",
+      "Initiation à la cybersécurité"
+    ]
+  }
+]

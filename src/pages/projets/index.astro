@@ -1,0 +1,156 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
+
+// Sort by date descending
+const sortedProjects = allProjects.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+
+const featuredProjects = sortedProjects.filter((p) => p.data.featured);
+
+// Get all unique categories/types from projects
+const allCategories = new Set<string>();
+sortedProjects.forEach((p) => {
+  const cat = p.data.category || p.data.type;
+  if (cat) allCategories.add(cat);
+});
+
+// Dynamic categories from actual project data
+const categories = [
+  { id: "all", label: "Tous" },
+  { id: "network", label: "🌐 Réseau" },
+  { id: "ops", label: "⚙️ Ops/DevOps" },
+  { id: "homelab", label: "🏠 Homelab" },
+  { id: "security", label: "🔒 Sécurité" },
+  { id: "reseau", label: "🌐 Réseau" },
+  { id: "securite", label: "🔒 Cybersécurité" },
+  { id: "systeme", label: "⚙️ Systèmes" },
+  { id: "scolaire", label: "🎓 Scolaire" },
+  { id: "perso", label: "💡 Personnel" },
+].filter((cat) => cat.id === "all" || allCategories.has(cat.id));
+---
+
+<BaseLayout
+  title="Projets | Portfolio"
+  description="Découvrez mes projets en réseau, cybersécurité et systèmes"
+>
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title">Mes Projets</h1>
+      <p class="page-description">
+        Découvrez mes réalisations en réseau, cybersécurité et systèmes. Chaque
+        projet représente une opportunité d'apprentissage et de mise en pratique
+        de mes compétences.
+      </p>
+    </div>
+  </div>
+
+  {
+    featuredProjects.length > 0 && (
+      <section class="section" style="padding-top: 0;">
+        <div class="container">
+          <h2 class="section-title">Projets Phares</h2>
+          <div class="featured-grid">
+            {featuredProjects.map((project) => (
+              <ProjectCard
+                title={project.data.title}
+                description={project.data.description}
+                summary={project.data.summary}
+                category={project.data.category}
+                type={project.data.type}
+                image={project.data.image}
+                tags={project.data.tags}
+                slug={project.slug}
+                featured={true}
+                status={project.data.status}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Tous les Projets</h2>
+
+      <div class="filter-bar" id="filter-bar">
+        {
+          categories.map((cat) => (
+            <button
+              class:list={["filter-btn", { active: cat.id === "all" }]}
+              data-category={cat.id}
+            >
+              {cat.label}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="project-grid" id="project-grid">
+        {
+          sortedProjects.map((project) => {
+            const projectCategory =
+              project.data.category || project.data.type || "perso";
+            return (
+              <div class="project-item" data-category={projectCategory}>
+                <ProjectCard
+                  title={project.data.title}
+                  description={project.data.description}
+                  summary={project.data.summary}
+                  category={project.data.category}
+                  type={project.data.type}
+                  image={project.data.image}
+                  tags={project.data.tags}
+                  slug={project.slug}
+                  status={project.data.status}
+                />
+              </div>
+            );
+          })
+        }
+      </div>
+
+      {
+        sortedProjects.length === 0 && (
+          <div style="text-align: center; padding: 4rem 0; color: var(--text-muted);">
+            <p>Aucun projet pour le moment. Revenez bientôt !</p>
+          </div>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const filterBar = document.getElementById("filter-bar");
+  const projectGrid = document.getElementById("project-grid");
+
+  filterBar?.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    if (!target.classList.contains("filter-btn")) return;
+
+    const category = target.dataset.category;
+
+    // Update active button
+    filterBar.querySelectorAll(".filter-btn").forEach((btn) => {
+      btn.classList.remove("active");
+    });
+    target.classList.add("active");
+
+    // Filter projects
+    projectGrid?.querySelectorAll(".project-item").forEach((item) => {
+      const itemCategory = (item as HTMLElement).dataset.category;
+      if (category === "all" || itemCategory === category) {
+        (item as HTMLElement).style.display = "block";
+      } else {
+        (item as HTMLElement).style.display = "none";
+      }
+    });
+  });
+</script>
