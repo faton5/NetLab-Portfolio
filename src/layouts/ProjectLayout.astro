@@ -47,11 +47,16 @@ const statusLabels: Record<string, string> = {
 <BaseLayout title={`${title} | Portfolio`} description={description}>
   <article class="container">
     <div class="project-hero">
-      {image && <img src={image} alt={title} class="project-hero__image" />}
+      <!-- Breadcrumb Navigation -->
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-separator">→</span>
+        <a href="/projets">Projets</a>
+        <span class="breadcrumb-separator">→</span>
+        <span class="breadcrumb-current">{title}</span>
+      </nav>
 
-      <a href="/projets" class="btn btn-ghost" style="margin-bottom: 1.5rem;">
-        ← Retour aux projets
-      </a>
+      {image && <img src={image} alt={title} class="project-hero__image" />}
 
       <h1 class="page-title">{title}</h1>
       <p class="page-description">{description}</p>

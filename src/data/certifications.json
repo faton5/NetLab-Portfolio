@@ -1,0 +1,23 @@
+[
+  {
+    "name": "CCNA",
+    "status": "planned",
+    "year": "2025",
+    "icon": "🌐",
+    "description": "Certification réseau Cisco prévue"
+  },
+  {
+    "name": "Cisco Networking Academy",
+    "status": "in_progress",
+    "year": "2025",
+    "icon": "🎓",
+    "description": "Formation en cours via le cursus"
+  },
+  {
+    "name": "Certifications Cybersécurité",
+    "status": "planned",
+    "year": "2025-2026",
+    "icon": "🔒",
+    "description": "CEH, CompTIA Security+ ou équivalent"
+  }
+]
